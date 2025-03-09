@@ -198,3 +198,8 @@ Don't feed serv any illegal instructions after midnight. Many logic expressions 
 The bus interface is kind of Wishbone, but with most signals removed. There's an important difference though. Don't send acks on the instruction or data buses unless serv explicitly asks for something by raising its cyc signal. Otherwise serv becomes very confused.
 
 Don't go changing the clock frequency on a whim when running Zephyr. Or well, it's ok I guess, but since the UART is bitbanged, this will change the baud rate as well. As of writing, the UART is running at 115200 baud rate when the CPU is 32 MHz. There are two NOPs in the driver to slow it down a bit, so if those are removed I think it could achieve baud rate 115200 on a 24MHz clock.. in case someone wants to try
+
+
+## Optimizations done as part of SERV STOCHASTIC ALU
+* Introduced a main wrapper thereby reducing total IO utilization
+* Designed a separate ALU which supports Stochastic Computing operations and AI functionalities
