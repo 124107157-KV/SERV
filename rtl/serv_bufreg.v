@@ -53,7 +53,7 @@ module serv_bufreg #(
 	      data[1:0] <= {i_init ? q : data[2], data[1]};
 	 end
 	 always @(*) lsb = data[1:0];
-	 assign o_q = data[0] & {W{i_en}};
+	 assign o_q = (MDU & i_mdu_op) ? data[0] & {W{i_en}} : data[0];
       end
    endgenerate
 

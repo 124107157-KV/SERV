@@ -1,5 +1,7 @@
 `default_nettype none
 
+//`define EXT_ENABLED
+
 module serv_synth_wrapper
   #(
     /* Register signals before or after the decoder
@@ -118,13 +120,14 @@ module serv_synth_wrapper
       .o_dbus_cyc   (o_dbus_cyc),
       .i_dbus_rdt   (i_dbus_rdt),
       .i_dbus_ack   (i_dbus_ack),
-
+`ifdef EXT_ENABLED
       //Extension
       .o_ext_funct3 (),
       .i_ext_ready  (1'b0),
       .i_ext_rd     (32'd0),
       .o_ext_rs1    (),
       .o_ext_rs2    (),
+ `endif
       //MDU
       .o_mdu_valid  ());
 
