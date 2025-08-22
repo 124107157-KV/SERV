@@ -1,4 +1,23 @@
-`default_nettype none
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 18.08.2025 15:29:43
+// Design Name: 
+// Module Name: serv_rf_if
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
 module serv_rf_if
   #(parameter WITH_CSR = 1,
     parameter W = 1,

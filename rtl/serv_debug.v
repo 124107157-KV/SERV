@@ -58,8 +58,8 @@ module serv_debug
     input wire	      i_csr_mcause_en,
     input wire	      i_csr_en,
     input wire [1:0]  i_csr_addr,
-    input wire	      i_wen0,
-    input wire [B:0]  i_wdata0,
+    input wire	      i_rf_wen,
+    input wire [B:0]  i_rf_wdata,
     input wire	      i_cnt_done);
 
    reg		      update_rd = 1'b0;
@@ -113,10 +113,10 @@ module serv_debug
    reg [31:0]	      x31 = 32'hxxxxxxxx;
 
    always @(posedge i_clk) begin
-      update_rd <= i_cnt_done & i_wen0;
+      update_rd <= i_cnt_done & i_rf_wen;
 
-      if (i_wen0)
-        dbg_rd <= {i_wdata0,dbg_rd[31:W]};
+      if (i_rf_wen)
+        dbg_rd <= {i_rf_wdata,dbg_rd[31:W]};
 
       //End of instruction that writes to RF
       if (update_rd) begin
